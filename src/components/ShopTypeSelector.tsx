@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { 
   Store, 
+  TrendingUp, 
   Building2, 
   Zap, 
   ArrowRight, 
@@ -11,7 +12,8 @@ import {
   ChevronRight,
   Coffee,
   Sprout,
-  Utensils
+  Utensils,
+  Users
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 

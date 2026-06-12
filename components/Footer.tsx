@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-white font-bold mb-4">{t('footer.company')}</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/why-itea-supply" className="hover:text-emerald-400 transition-colors">{t('nav.why')}</Link></li>
+              <li><Link to="/why-orderpin" className="hover:text-emerald-400 transition-colors">{t('nav.why')}</Link></li>
               <li><Link to="/contact" className="hover:text-emerald-400 transition-colors">{t('nav.contact')}</Link></li>
               <li><Link to="/resources" className="hover:text-emerald-400 transition-colors">{t('nav.resources')}</Link></li>
             </ul>

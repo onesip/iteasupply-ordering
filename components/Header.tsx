@@ -24,7 +24,6 @@ const Header: React.FC = () => {
   const buttonBg = isScrolled || !isHome ? 'bg-emerald-600 text-white hover:bg-emerald-700' : 'bg-white text-emerald-900 hover:bg-emerald-50';
 
   const navLinks = [
-    { name: t('nav.home'), path: 'https://itea-supply-bv.odoo.com/' },
     { name: t('nav.why'), path: '/why-orderpin' },
     { name: t('nav.features'), path: '/features' },
     { name: t('nav.pricing'), path: '/pricing' },
@@ -48,23 +47,13 @@ const Header: React.FC = () => {
           
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              link.path.startsWith('http') ? (
-                <a
-                  key={link.path}
-                  href={link.path}
-                  className={`text-sm font-medium hover:text-emerald-500 transition-colors ${textColor}`}
-                >
-                  {link.name}
-                </a>
-              ) : (
-                <Link 
-                  key={link.path}
-                  to={link.path} 
-                  className={`text-sm font-medium hover:text-emerald-500 transition-colors ${textColor}`}
-                >
-                  {link.name}
-                </Link>
-              )
+              <Link 
+                key={link.path}
+                to={link.path} 
+                className={`text-sm font-medium hover:text-emerald-500 transition-colors ${textColor}`}
+              >
+                {link.name}
+              </Link>
             ))}
             
             <button 
@@ -101,25 +90,14 @@ const Header: React.FC = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white absolute top-full left-0 w-full shadow-lg border-t border-slate-100 py-4 px-4 flex flex-col space-y-4">
           {navLinks.map((link) => (
-            link.path.startsWith('http') ? (
-              <a
-                key={link.path}
-                href={link.path}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-slate-800 font-medium py-2 border-b border-slate-50"
-              >
-                {link.name}
-              </a>
-            ) : (
-              <Link 
-                key={link.path}
-                to={link.path} 
-                onClick={() => setIsMobileMenuOpen(false)} 
-                className="text-slate-800 font-medium py-2 border-b border-slate-50"
-              >
-                {link.name}
-              </Link>
-            )
+            <Link 
+              key={link.path}
+              to={link.path} 
+              onClick={() => setIsMobileMenuOpen(false)} 
+              className="text-slate-800 font-medium py-2 border-b border-slate-50"
+            >
+              {link.name}
+            </Link>
           ))}
           <Link 
             to="/contact" 
