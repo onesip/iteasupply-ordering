@@ -1,331 +1,257 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Activity,
   ArrowRight,
   BarChart3,
   BellRing,
-  CheckCircle2,
-  Clock3,
   Cpu,
   Gift,
-  Globe2,
   Layers3,
-  Mail,
-  MessageSquare,
-  MonitorSmartphone,
   Plug,
-  ShoppingBag,
   Smartphone,
-  Tags,
   TicketPercent,
-  Users,
   Workflow,
-  Zap,
 } from 'lucide-react';
 import { useLanguage } from '../src/contexts/LanguageContext';
+import { LiveSystemView } from '../src/components/LiveSystemShowcase';
+
+type CoreKey = 'machine' | 'loyalty';
 
 const Features = () => {
   const { language } = useLanguage();
   const isEn = language === 'en';
+  const uiLanguage = isEn ? 'en' : 'zh';
+  const [activeCore, setActiveCore] = useState<CoreKey>('machine');
 
   const copy = isEn
     ? {
-        eyebrow: 'PLATFORM CAPABILITIES',
-        title: 'A bubble tea operating system, not a collection of disconnected tools.',
-        subtitle:
-          'The platform connects customer ordering, loyalty, production, notifications and owner analytics around the same order trail.',
-        coreOne: 'CORE 01',
-        coreTwo: 'CORE 02',
-        machine: 'Tea-Machine Integration',
-        machineDesc:
-          'Route structured recipe and customization data into the production workflow, keep status visible and preserve logs for support.',
-        loyalty: 'Loyalty & Membership',
-        loyaltyDesc:
-          'Points, coupons, campaigns and customer history stay connected to the transaction that created them.',
-        explore: 'Explore feature',
-        architectureKicker: 'SYSTEM ARCHITECTURE',
-        architectureTitle: 'Multiple touchpoints, one operating layer.',
-        architectureDesc:
-          'Customer-facing channels, store operations and production do not need separate data silos. They can share the same order, customer and status information.',
-        touchpoints: ['HTML5 ordering', 'In-store ordering', 'Delivery channels', 'Third-party APIs'],
-        engine: 'ORDER & CUSTOMER ENGINE',
-        engineSub: 'One source of truth',
-        outputs: ['Production', 'Loyalty', 'Notifications', 'Analytics'],
-        capabilitiesKicker: 'CONNECTED MODULES',
-        capabilitiesTitle: 'Eight capabilities designed to work together.',
-        capabilitiesDesc: 'Each module is useful on its own, but the value increases when the workflow remains connected.',
-        features: [
-          ['HTML5 Mobile Ordering', 'Customers order directly from any modern phone browser — no app download required.', '/features/online-ordering'],
-          ['Points & Membership', 'Recognize members, award points and retain customer history automatically.', '/features/loyalty'],
-          ['Campaigns & Offers', 'Create coupons, rewards and targeted activities around customer behavior.', '/features/loyalty'],
-          ['Tea-Machine Integration', 'Send structured drink instructions into the production workflow and keep status linked.', '/features/machine'],
-          ['Order Status System', 'Show clear stages from received to preparing to ready for pickup.', '/features/online-ordering'],
-          ['SMS & Email Notifications', 'Send confirmation and ready-for-pickup notifications through familiar channels.', '/features/online-ordering'],
-          ['Data & Analytics', 'Track sales, products, customers, channels and operational trends from one owner view.', '/features/reports'],
-          ['Delivery API Connectivity', 'Connect external delivery channels into the same order and operations layer.', '/features/all-in-one'],
-        ],
-        workflowKicker: 'END-TO-END WORKFLOW',
-        workflowTitle: 'A single order can trigger the entire store journey.',
-        workflowDesc:
-          'Ordering, member recognition, production routing, status, notification and analytics all stay attached to one order trail.',
-        workflow: ['Mobile order', 'Member / offer', 'Production route', 'Machine / staff', 'Status + notify', 'Analytics'],
-        machinePreview: 'Production console',
-        order: 'Order #A184',
-        recipe: 'Recipe mapped',
-        machineState: 'Machine 01 · Mixing',
-        statusBack: 'Status returned',
-        loyaltyPreview: 'Customer lifecycle',
-        lifecycle: ['Join', 'Earn', 'Reward', 'Return'],
-        campaign: 'Targeted campaign',
-        repeatLift: '+18% repeat visits',
-        ctaTitle: 'See how the modules behave as one system.',
-        ctaDesc: 'A live demo is more useful than eight isolated screenshots. We can show the complete order-to-production-to-loyalty journey.',
+        eyebrow: 'PLATFORM',
+        title: 'One operating system around the full bubble tea journey.',
+        subtitle: 'Ordering, loyalty, production, notifications and analytics share the same operating flow instead of becoming separate tools.',
+        coreEyebrow: 'TWO CORE SYSTEMS',
+        coreTitle: 'Start with the two capabilities that change how the store operates.',
+        machine: 'Tea-machine integration',
+        machineDesc: 'Move structured drink specifications into production and keep production status and output connected to the order.',
+        loyalty: 'Loyalty & membership',
+        loyaltyDesc: 'Link points, campaigns and repeat-purchase behavior directly to real orders and customer activity.',
+        explore: 'Explore in detail',
+        viewMachine: 'Production view',
+        viewLoyalty: 'Loyalty view',
+        flowEyebrow: 'SYSTEM FLOW',
+        flowTitle: 'Every touchpoint can feed the same operating layer.',
+        flowDesc: 'The goal is not to add more software. It is to keep the order and customer trail intact from the first tap to the final report.',
+        flowSteps: [
+          ['Customer', 'HTML5 / in-store / delivery', Smartphone],
+          ['Order engine', 'Options, status and routing', Workflow],
+          ['Production', 'Machine or staff workflow', Cpu],
+          ['Engagement', 'Loyalty and notifications', Gift],
+          ['Insight', 'Sales and customer analytics', BarChart3],
+        ] as const,
+        capabilitiesEyebrow: 'CONNECTED CAPABILITIES',
+        capabilitiesTitle: 'Everything needed around the core workflow.',
+        capabilities: [
+          ['HTML5 mobile ordering', 'Mobile ordering without an app download.', '/features/online-ordering', Smartphone],
+          ['Points & membership', 'Member recognition, points and customer history.', '/features/loyalty', Gift],
+          ['Campaigns & offers', 'Coupons, rewards and targeted activities.', '/features/loyalty', TicketPercent],
+          ['Tea-machine integration', 'Structured production instructions and status.', '/features/machine', Cpu],
+          ['Order status', 'Clear progress from confirmed to ready.', '/features/online-ordering', Activity],
+          ['SMS & email', 'Automated confirmation and pickup updates.', '/features/online-ordering', BellRing],
+          ['Analytics', 'Sales, products, customers and trends.', '/features/reports', BarChart3],
+          ['Delivery API', 'Connect external channels into the same flow.', '/features/all-in-one', Plug],
+        ] as const,
+        ctaTitle: 'The best way to understand it is to see one order move through the system.',
+        ctaDesc: 'We can show the complete customer-to-production-to-loyalty journey in a live walkthrough.',
         cta: 'Book a live demo',
       }
     : {
-        eyebrow: '平台能力',
-        title: '不是一堆彼此割裂的工具，而是一套奶茶店运营系统。',
-        subtitle: '顾客下单、会员、生产、通知和老板数据围绕同一条订单轨迹连接起来。',
-        coreOne: '核心 01',
-        coreTwo: '核心 02',
+        eyebrow: '平台',
+        title: '围绕奶茶门店完整流程的一套运营系统。',
+        subtitle: '点单、会员、生产、通知和数据分析共享同一条运营链路，而不是变成彼此割裂的工具。',
+        coreEyebrow: '两个核心系统',
+        coreTitle: '先看真正改变门店运营方式的两项能力。',
         machine: '奶茶机联动',
-        machineDesc: '把结构化配方和客制化数据送入生产流程，保留制作状态，并留下支持诊断所需的日志。',
+        machineDesc: '把结构化饮品规格送入生产，并让制作状态和产出继续和订单保持连接。',
         loyalty: '会员与积分',
-        loyaltyDesc: '积分、优惠券、活动和顾客历史，都和产生它们的订单保持连接。',
-        explore: '查看功能',
-        architectureKicker: '系统架构',
-        architectureTitle: '多个触点，共用一个运营数据层。',
-        architectureDesc: '顾客渠道、门店运营和生产端不需要各自形成数据孤岛，可以共享同一笔订单、同一个顾客和同一套状态信息。',
-        touchpoints: ['HTML5 下单', '店内点单', '外卖渠道', '第三方 API'],
-        engine: '订单与顾客中台',
-        engineSub: '统一数据源',
-        outputs: ['生产', '会员', '通知', '数据分析'],
-        capabilitiesKicker: '互相连接的模块',
-        capabilitiesTitle: '八项能力，从一开始就按照协同工作来设计。',
-        capabilitiesDesc: '每个模块单独都有价值，但当数据链保持连接时，价值会明显放大。',
-        features: [
-          ['HTML5 手机下单', '顾客直接用手机浏览器下单，无需下载 App。', '/features/online-ordering'],
-          ['积分与会员', '自动识别会员、累计积分并保留顾客消费历史。', '/features/loyalty'],
-          ['活动与优惠', '根据顾客行为创建优惠券、奖励和定向活动。', '/features/loyalty'],
-          ['奶茶机联动', '把结构化饮品指令送入生产流程，并保持状态连接。', '/features/machine'],
-          ['订单状态系统', '从已接单、制作中到可取餐，每一步都清晰可见。', '/features/online-ordering'],
-          ['SMS / Email 通知', '订单确认和制作完成后通过常用渠道主动通知顾客。', '/features/online-ordering'],
-          ['数据与经营分析', '统一查看销售、产品、顾客、渠道和运营趋势。', '/features/reports'],
-          ['外卖 API 接入', '把外部外卖渠道接入同一个订单和运营数据层。', '/features/all-in-one'],
-        ],
-        workflowKicker: '端到端工作流',
-        workflowTitle: '一笔订单，可以触发整个门店流程。',
-        workflowDesc: '下单、会员识别、生产路由、状态、通知和分析始终挂在同一条订单轨迹上。',
-        workflow: ['手机下单', '会员 / 活动', '生产路由', '机器 / 人工', '状态 + 通知', '数据分析'],
-        machinePreview: '生产控制台',
-        order: '订单 #A184',
-        recipe: '配方已映射',
-        machineState: '奶茶机 01 · 制作中',
-        statusBack: '状态已回传',
-        loyaltyPreview: '顾客生命周期',
-        lifecycle: ['加入', '积累', '奖励', '复购'],
-        campaign: '定向活动',
-        repeatLift: '复购 +18%',
-        ctaTitle: '真正看懂它，要看这些模块如何作为一套系统运行。',
-        ctaDesc: '现场演示比八张孤立截图更有价值。我们可以直接展示从下单、生产到会员的完整链路。',
+        loyaltyDesc: '积分、活动和复购行为直接建立在真实订单与顾客行为之上。',
+        explore: '查看详细功能',
+        viewMachine: '生产界面',
+        viewLoyalty: '会员界面',
+        flowEyebrow: '系统流程',
+        flowTitle: '所有触点都可以进入同一个运营层。',
+        flowDesc: '目标不是堆更多软件，而是让同一笔订单和同一个顾客从第一次点击一直连接到最终报表。',
+        flowSteps: [
+          ['顾客', 'HTML5 / 店内 / 外卖', Smartphone],
+          ['订单引擎', '选项、状态与路由', Workflow],
+          ['生产', '机器或人工制作', Cpu],
+          ['运营', '会员与顾客通知', Gift],
+          ['分析', '销售与顾客数据', BarChart3],
+        ] as const,
+        capabilitiesEyebrow: '互相连接的能力',
+        capabilitiesTitle: '围绕核心流程，把日常运营需要的能力补齐。',
+        capabilities: [
+          ['HTML5 手机点单', '无需下载 App 的移动端点单。', '/features/online-ordering', Smartphone],
+          ['积分与会员', '会员识别、积分和消费历史。', '/features/loyalty', Gift],
+          ['活动与优惠', '优惠券、奖励和定向活动。', '/features/loyalty', TicketPercent],
+          ['奶茶机联动', '结构化生产指令与状态。', '/features/machine', Cpu],
+          ['订单状态', '从确认到可取餐清晰可见。', '/features/online-ordering', Activity],
+          ['SMS / Email', '自动发送确认和取餐通知。', '/features/online-ordering', BellRing],
+          ['数据分析', '销售、产品、顾客和趋势。', '/features/reports', BarChart3],
+          ['外卖 API', '外部渠道进入同一条运营流程。', '/features/all-in-one', Plug],
+        ] as const,
+        ctaTitle: '真正看懂它，最好直接看一笔订单如何跑完整条链路。',
+        ctaDesc: '现场可以展示从顾客下单、生产到会员沉淀的完整过程。',
         cta: '预约现场演示',
       };
 
-  const featureIcons = [Smartphone, Gift, TicketPercent, Cpu, Activity, BellRing, BarChart3, Plug];
-  const touchIcons = [Globe2, ShoppingBag, Layers3, Plug];
-  const outputIcons = [Cpu, Gift, BellRing, BarChart3];
-  const workflowIcons = [Smartphone, Users, Workflow, Cpu, MessageSquare, BarChart3];
+  const core = activeCore === 'machine'
+    ? {
+        title: copy.machine,
+        desc: copy.machineDesc,
+        view: 'production' as const,
+        href: '/features/machine',
+        icon: Cpu,
+        label: copy.viewMachine,
+      }
+    : {
+        title: copy.loyalty,
+        desc: copy.loyaltyDesc,
+        view: 'loyalty' as const,
+        href: '/features/loyalty',
+        icon: Gift,
+        label: copy.viewLoyalty,
+      };
 
   return (
     <div className="min-h-screen bg-white pt-[76px] text-slate-950">
-      <section className="relative overflow-hidden border-b border-emerald-950/10 bg-[#f7fbf8] py-16 lg:py-24">
-        <div className="absolute -left-20 top-0 h-64 w-64 rounded-full bg-emerald-300/20 blur-3xl" />
-        <div className="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-teal-300/20 blur-3xl" />
+      <section className="relative overflow-hidden bg-[#f7fbf8] py-20 lg:py-28">
+        <div className="pointer-events-none absolute -left-36 top-0 h-80 w-80 rounded-full bg-emerald-200/40 blur-3xl" />
+        <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-cyan-100/60 blur-3xl" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-emerald-800 shadow-sm">
+          <div className="max-w-5xl">
+            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white px-4 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-emerald-800 shadow-sm">
               <Layers3 className="h-4 w-4" /> {copy.eyebrow}
             </div>
-            <h1 className="mt-6 text-5xl font-black leading-[1.02] tracking-[-0.055em] sm:text-6xl lg:text-7xl">{copy.title}</h1>
+            <h1 className="mt-7 max-w-5xl text-5xl font-black leading-[1.01] tracking-[-0.055em] sm:text-6xl lg:text-7xl">{copy.title}</h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600 sm:text-xl">{copy.subtitle}</p>
           </div>
+        </div>
+      </section>
 
-          <div className="mt-12 grid gap-5 lg:grid-cols-2">
-            <Link to="/features/machine" className="group relative overflow-hidden rounded-[32px] bg-slate-950 p-8 text-white shadow-2xl shadow-slate-950/10 sm:p-9">
-              <div className="absolute -right-16 -top-20 h-52 w-52 rounded-full bg-emerald-400/20 blur-3xl" />
-              <div className="relative">
-                <div className="flex items-start justify-between gap-6">
-                  <div className="rounded-2xl bg-emerald-500 p-3.5 text-white"><Cpu className="h-7 w-7" /></div>
-                  <ArrowRight className="h-5 w-5 text-slate-400 transition group-hover:translate-x-1 group-hover:text-emerald-300" />
-                </div>
-                <div className="mt-7 text-xs font-black uppercase tracking-[0.2em] text-emerald-300">{copy.coreOne}</div>
-                <h2 className="mt-3 text-3xl font-black tracking-[-0.035em]">{copy.machine}</h2>
-                <p className="mt-4 max-w-xl text-base leading-7 text-slate-300">{copy.machineDesc}</p>
+      <section className="py-24 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <div className="text-[11px] font-black uppercase tracking-[0.2em] text-emerald-700">{copy.coreEyebrow}</div>
+            <h2 className="mt-4 text-4xl font-black tracking-[-0.045em] sm:text-5xl">{copy.coreTitle}</h2>
+          </div>
 
-                <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.055] p-4">
-                  <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">{copy.machinePreview}</div>
-                  <div className="mt-4 grid grid-cols-2 gap-2">
-                    {[
-                      [copy.order, copy.recipe],
-                      [copy.machineState, copy.statusBack],
-                    ].map(([a, b]) => (
-                      <div key={a} className="rounded-xl bg-white/5 p-3">
-                        <div className="text-xs font-black text-white">{a}</div>
-                        <div className="mt-1 text-[10px] font-bold text-emerald-300">{b}</div>
+          <div className="mt-12 grid gap-8 lg:grid-cols-[0.58fr_1.42fr] lg:items-start">
+            <div className="space-y-3 lg:sticky lg:top-28">
+              {([
+                ['machine', copy.machine, copy.machineDesc, Cpu],
+                ['loyalty', copy.loyalty, copy.loyaltyDesc, Gift],
+              ] as const).map(([key, title, desc, Icon], index) => {
+                const active = activeCore === key;
+                return (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={() => setActiveCore(key)}
+                    className={`group w-full rounded-[26px] border p-5 text-left transition duration-300 ${active ? 'border-emerald-200 bg-white shadow-xl shadow-emerald-900/5' : 'border-slate-200 bg-white/50 hover:border-emerald-100 hover:bg-white'}`}
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl transition ${active ? 'bg-emerald-600 text-white' : 'bg-slate-50 text-slate-500 group-hover:text-emerald-700'}`}><Icon className="h-5 w-5" /></div>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center justify-between gap-4">
+                          <h3 className="text-lg font-black text-slate-950">{String(index + 1).padStart(2, '0')} · {title}</h3>
+                          <ArrowRight className={`h-4 w-4 shrink-0 transition ${active ? 'text-emerald-700' : 'text-slate-300'}`} />
+                        </div>
+                        <p className="mt-2 text-sm leading-6 text-slate-500">{desc}</p>
                       </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="mt-7 inline-flex items-center gap-2 text-sm font-black text-emerald-300">{copy.explore} <ArrowRight className="h-4 w-4" /></div>
-              </div>
-            </Link>
-
-            <Link to="/features/loyalty" className="group relative overflow-hidden rounded-[32px] border border-emerald-100 bg-emerald-50 p-8 shadow-xl shadow-emerald-950/5 sm:p-9">
-              <div className="absolute -right-16 -top-20 h-52 w-52 rounded-full bg-emerald-300/30 blur-3xl" />
-              <div className="relative">
-                <div className="flex items-start justify-between gap-6">
-                  <div className="rounded-2xl bg-white p-3.5 text-emerald-700 shadow-sm ring-1 ring-emerald-900/5"><Gift className="h-7 w-7" /></div>
-                  <ArrowRight className="h-5 w-5 text-emerald-500 transition group-hover:translate-x-1" />
-                </div>
-                <div className="mt-7 text-xs font-black uppercase tracking-[0.2em] text-emerald-700">{copy.coreTwo}</div>
-                <h2 className="mt-3 text-3xl font-black tracking-[-0.035em] text-slate-950">{copy.loyalty}</h2>
-                <p className="mt-4 max-w-xl text-base leading-7 text-slate-600">{copy.loyaltyDesc}</p>
-
-                <div className="mt-8 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-emerald-900/5">
-                  <div className="text-[10px] font-black uppercase tracking-[0.16em] text-emerald-700">{copy.loyaltyPreview}</div>
-                  <div className="mt-4 grid grid-cols-4 gap-2">
-                    {copy.lifecycle.map((label, index) => (
-                      <div key={label} className="text-center">
-                        <div className={`mx-auto flex h-8 w-8 items-center justify-center rounded-full text-[10px] font-black ${index < 3 ? 'bg-emerald-600 text-white' : 'bg-emerald-50 text-emerald-700'}`}>{index + 1}</div>
-                        <div className="mt-2 text-[9px] font-bold text-slate-500">{label}</div>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="mt-4 flex items-center justify-between rounded-xl bg-emerald-50 px-3 py-2.5">
-                    <span className="text-[10px] font-black text-slate-700">{copy.campaign}</span>
-                    <span className="text-xs font-black text-emerald-700">{copy.repeatLift}</span>
-                  </div>
-                </div>
-
-                <div className="mt-7 inline-flex items-center gap-2 text-sm font-black text-emerald-700">{copy.explore} <ArrowRight className="h-4 w-4" /></div>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <div className="text-xs font-black uppercase tracking-[0.2em] text-emerald-700">{copy.architectureKicker}</div>
-            <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] sm:text-5xl">{copy.architectureTitle}</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">{copy.architectureDesc}</p>
-          </div>
-
-          <div className="mt-12 grid gap-4 lg:grid-cols-[1fr_0.78fr_1fr] lg:items-center">
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-              {copy.touchpoints.map((label, index) => {
-                const Icon = touchIcons[index];
-                return (
-                  <div key={label} className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700"><Icon className="h-5 w-5" /></div>
-                    <div className="font-black text-slate-950">{label}</div>
-                    <ArrowRight className="ml-auto h-4 w-4 text-emerald-500" />
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="relative flex min-h-[260px] items-center justify-center">
-              <div className="absolute inset-x-0 top-1/2 hidden h-px bg-emerald-200 lg:block" />
-              <div className="relative z-10 flex h-44 w-44 flex-col items-center justify-center rounded-full bg-slate-950 p-6 text-center text-white shadow-2xl ring-[18px] ring-emerald-50">
-                <Workflow className="h-7 w-7 text-emerald-300" />
-                <div className="mt-3 text-base font-black leading-5">{copy.engine}</div>
-                <div className="mt-2 text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400">{copy.engineSub}</div>
-              </div>
-            </div>
-
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-              {copy.outputs.map((label, index) => {
-                const Icon = outputIcons[index];
-                return (
-                  <div key={label} className="flex items-center gap-4 rounded-2xl border border-emerald-100 bg-[#f7fbf8] p-4 shadow-sm">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-600 text-white"><Icon className="h-5 w-5" /></div>
-                    <div className="font-black text-slate-950">{label}</div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#f7fbf8] py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <div className="text-xs font-black uppercase tracking-[0.2em] text-emerald-700">{copy.capabilitiesKicker}</div>
-            <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] sm:text-5xl">{copy.capabilitiesTitle}</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">{copy.capabilitiesDesc}</p>
-          </div>
-
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {copy.features.map(([title, desc, link], index) => {
-              const Icon = featureIcons[index];
-              return (
-                <Link key={`${title}-${index}`} to={link} className="group flex min-h-[260px] flex-col rounded-[26px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-emerald-200 hover:shadow-xl hover:shadow-emerald-950/5">
-                  <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${index === 3 ? 'bg-slate-950 text-emerald-300' : 'bg-emerald-50 text-emerald-700'}`}>
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="mt-5 text-xl font-black tracking-[-0.025em] text-slate-950">{title}</h3>
-                  <p className="mt-3 flex-1 text-sm leading-6 text-slate-600">{desc}</p>
-                  <div className="mt-6 inline-flex items-center gap-1.5 text-sm font-black text-emerald-700">
-                    {copy.explore} <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-slate-950 py-20 text-white lg:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-            <div>
-              <div className="text-xs font-black uppercase tracking-[0.2em] text-emerald-300">{copy.workflowKicker}</div>
-              <h2 className="mt-4 text-4xl font-black tracking-[-0.045em] sm:text-5xl">{copy.workflowTitle}</h2>
-              <p className="mt-5 max-w-xl text-lg leading-8 text-slate-300">{copy.workflowDesc}</p>
-            </div>
-
-            <div className="grid gap-3 sm:grid-cols-2">
-              {copy.workflow.map((label, index) => {
-                const Icon = workflowIcons[index];
-                return (
-                  <div key={label} className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.055] p-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-400 text-emerald-950"><Icon className="h-5 w-5" /></div>
-                    <div className="min-w-0 flex-1">
-                      <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-500">0{index + 1}</div>
-                      <div className="mt-1 font-black text-white">{label}</div>
                     </div>
-                    {index < copy.workflow.length - 1 && <ArrowRight className="h-4 w-4 shrink-0 text-emerald-400" />}
-                  </div>
+                  </button>
                 );
               })}
+            </div>
+
+            <div className="rounded-[38px] bg-slate-950 p-4 shadow-[0_32px_80px_-42px_rgba(15,23,42,0.65)] sm:p-6">
+              <div className="rounded-[30px] bg-white p-3 sm:p-4">
+                <div className="mb-4 flex items-center justify-between gap-4 px-1">
+                  <div>
+                    <div className="text-[10px] font-black uppercase tracking-[0.16em] text-emerald-700">{core.label}</div>
+                    <div className="mt-1 text-xl font-black tracking-[-0.025em] text-slate-950">{core.title}</div>
+                  </div>
+                  <Link to={core.href} className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-xs font-black text-slate-700 transition hover:border-emerald-300 hover:text-emerald-800">
+                    {copy.explore} <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+                <div key={activeCore}>
+                  <LiveSystemView kind={core.view} language={uiLanguage} />
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
-        <div className="mx-auto max-w-6xl rounded-[34px] bg-emerald-950 px-6 py-12 text-center text-white shadow-2xl sm:px-10">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-400 text-emerald-950"><MonitorSmartphone className="h-7 w-7" /></div>
-          <h2 className="mx-auto mt-6 max-w-3xl text-3xl font-black tracking-[-0.035em] sm:text-4xl">{copy.ctaTitle}</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-emerald-100">{copy.ctaDesc}</p>
-          <Link to="/contact" className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 text-base font-black text-emerald-950 transition hover:bg-emerald-50">
-            {copy.cta} <ArrowRight className="h-5 w-5" />
-          </Link>
+      <section className="bg-slate-950 py-24 text-white lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:items-center">
+            <div>
+              <div className="text-[11px] font-black uppercase tracking-[0.2em] text-emerald-300">{copy.flowEyebrow}</div>
+              <h2 className="mt-4 text-4xl font-black tracking-[-0.045em] sm:text-5xl">{copy.flowTitle}</h2>
+              <p className="mt-5 max-w-xl text-lg leading-8 text-slate-300">{copy.flowDesc}</p>
+            </div>
+
+            <div className="relative grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+              <div className="absolute left-[8%] right-[8%] top-7 hidden h-px bg-gradient-to-r from-emerald-500/10 via-emerald-400 to-emerald-500/10 lg:block" />
+              {copy.flowSteps.map(([title, desc, Icon], index) => (
+                <div key={title} className="group relative rounded-[24px] border border-white/10 bg-white/[0.05] p-4 transition hover:-translate-y-1 hover:border-emerald-400/40 hover:bg-white/[0.075]">
+                  <div className="relative z-10 flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-950 text-emerald-300 ring-1 ring-white/10 transition group-hover:bg-emerald-500 group-hover:text-white"><Icon className="h-5 w-5" /></div>
+                  <div className="mt-5 text-[9px] font-black uppercase tracking-[0.16em] text-slate-500">0{index + 1}</div>
+                  <h3 className="mt-2 text-sm font-black text-white">{title}</h3>
+                  <p className="mt-2 text-[11px] leading-5 text-slate-400">{desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <div className="text-[11px] font-black uppercase tracking-[0.2em] text-emerald-700">{copy.capabilitiesEyebrow}</div>
+            <h2 className="mt-4 text-4xl font-black tracking-[-0.045em] text-slate-950 sm:text-5xl">{copy.capabilitiesTitle}</h2>
+          </div>
+
+          <div className="mt-12 divide-y divide-slate-200 border-y border-slate-200">
+            {copy.capabilities.map(([title, desc, href, Icon], index) => (
+              <Link key={`${title}-${index}`} to={href} className="group grid gap-4 py-6 transition md:grid-cols-[70px_1.1fr_1fr_36px] md:items-center">
+                <div className="text-xs font-black tracking-[0.14em] text-slate-300">{String(index + 1).padStart(2, '0')}</div>
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-50 text-emerald-700 transition group-hover:bg-emerald-50"><Icon className="h-4 w-4" /></div>
+                  <h3 className="text-lg font-black text-slate-950">{title}</h3>
+                </div>
+                <p className="text-sm leading-6 text-slate-500">{desc}</p>
+                <ArrowRight className="hidden h-4 w-4 text-slate-300 transition group-hover:translate-x-1 group-hover:text-emerald-600 md:block" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 pb-24 sm:px-6 lg:px-8 lg:pb-28">
+        <div className="mx-auto max-w-7xl rounded-[40px] bg-gradient-to-br from-emerald-950 via-slate-950 to-slate-950 px-7 py-14 text-white shadow-2xl sm:px-10 lg:px-14">
+          <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+            <div className="max-w-3xl">
+              <h2 className="text-4xl font-black tracking-[-0.045em] sm:text-5xl">{copy.ctaTitle}</h2>
+              <p className="mt-5 text-lg leading-8 text-slate-300">{copy.ctaDesc}</p>
+            </div>
+            <Link to="/contact" className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-500 px-7 py-4 text-base font-black text-white transition hover:-translate-y-0.5 hover:bg-emerald-400">
+              {copy.cta} <ArrowRight className="h-5 w-5" />
+            </Link>
+          </div>
         </div>
       </section>
     </div>
