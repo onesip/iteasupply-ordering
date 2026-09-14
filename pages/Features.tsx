@@ -6,15 +6,20 @@ import {
   BarChart3,
   BellRing,
   CheckCircle2,
+  Clock3,
   Cpu,
   Gift,
   Globe2,
   Layers3,
   Mail,
   MessageSquare,
+  MonitorSmartphone,
   Plug,
   ShoppingBag,
   Smartphone,
+  Tags,
+  TicketPercent,
+  Users,
   Workflow,
   Zap,
 } from 'lucide-react';
@@ -27,90 +32,110 @@ const Features = () => {
   const copy = isEn
     ? {
         eyebrow: 'PLATFORM CAPABILITIES',
-        title: 'A complete operating layer for modern bubble tea stores.',
+        title: 'A bubble tea operating system, not a collection of disconnected tools.',
         subtitle:
-          'Start with mobile ordering or loyalty. Add machine automation, notifications, analytics and external delivery connections without rebuilding the customer journey.',
-        machine: 'Machine Integration',
+          'The platform connects customer ordering, loyalty, production, notifications and owner analytics around the same order trail.',
+        coreOne: 'CORE 01',
+        coreTwo: 'CORE 02',
+        machine: 'Tea-Machine Integration',
         machineDesc:
-          'Connect structured order and recipe data to the tea-machine workflow, keep production status visible and preserve logs for remote diagnosis.',
-        loyalty: 'Loyalty & Growth',
+          'Route structured recipe and customization data into the production workflow, keep status visible and preserve logs for support.',
+        loyalty: 'Loyalty & Membership',
         loyaltyDesc:
-          'Points, campaigns, coupons and customer history are part of the same order flow — so every transaction can contribute to repeat business.',
-        learn: 'Explore feature',
-        sectionTitle: 'One platform, eight connected capabilities',
-        sectionDesc: 'The platform is designed as a connected system, not a collection of isolated modules.',
+          'Points, coupons, campaigns and customer history stay connected to the transaction that created them.',
+        explore: 'Explore feature',
+        architectureKicker: 'SYSTEM ARCHITECTURE',
+        architectureTitle: 'Multiple touchpoints, one operating layer.',
+        architectureDesc:
+          'Customer-facing channels, store operations and production do not need separate data silos. They can share the same order, customer and status information.',
+        touchpoints: ['HTML5 ordering', 'In-store ordering', 'Delivery channels', 'Third-party APIs'],
+        engine: 'ORDER & CUSTOMER ENGINE',
+        engineSub: 'One source of truth',
+        outputs: ['Production', 'Loyalty', 'Notifications', 'Analytics'],
+        capabilitiesKicker: 'CONNECTED MODULES',
+        capabilitiesTitle: 'Eight capabilities designed to work together.',
+        capabilitiesDesc: 'Each module is useful on its own, but the value increases when the workflow remains connected.',
         features: [
-          ['Mobile HTML5 Ordering', 'Customers order directly from any modern phone browser — no app download required.', '/features/online-ordering'],
-          ['Points & Membership', 'Earn points, build member profiles and reward repeat visits automatically.', '/features/loyalty'],
-          ['Campaigns & Offers', 'Create member offers, coupons and targeted activity around customer behavior.', '/features/loyalty'],
-          ['Tea-Machine Integration', 'Route structured drink instructions into the production workflow and keep status connected.', '/features/machine'],
-          ['Order Status System', 'Show clear stages from received to preparing to ready, reducing uncertainty and queue pressure.', '/features/online-ordering'],
-          ['SMS & Email Notifications', 'Send confirmation and ready-for-pickup notifications through familiar customer channels.', '/features/online-ordering'],
+          ['HTML5 Mobile Ordering', 'Customers order directly from any modern phone browser — no app download required.', '/features/online-ordering'],
+          ['Points & Membership', 'Recognize members, award points and retain customer history automatically.', '/features/loyalty'],
+          ['Campaigns & Offers', 'Create coupons, rewards and targeted activities around customer behavior.', '/features/loyalty'],
+          ['Tea-Machine Integration', 'Send structured drink instructions into the production workflow and keep status linked.', '/features/machine'],
+          ['Order Status System', 'Show clear stages from received to preparing to ready for pickup.', '/features/online-ordering'],
+          ['SMS & Email Notifications', 'Send confirmation and ready-for-pickup notifications through familiar channels.', '/features/online-ordering'],
           ['Data & Analytics', 'Track sales, products, customers, channels and operational trends from one owner view.', '/features/reports'],
           ['Delivery API Connectivity', 'Connect external delivery channels into the same order and operations layer.', '/features/all-in-one'],
         ],
-        flowEyebrow: 'HOW THE MODULES CONNECT',
-        flowTitle: 'The value is in the workflow, not just the feature list.',
-        flowDesc:
-          'A mobile order can create a member event, enter the production queue, update its status, trigger a customer notification and become part of your analytics — all under one order trail.',
-        flow: ['Mobile order', 'Member & offer', 'Production / machine', 'Live status', 'SMS / Email', 'Analytics'],
-        apiTitle: 'Built to connect',
-        apiDesc:
-          'HTML5 front end, notification channels, automation equipment and delivery APIs can sit in one architecture, so the system can grow with your store operation.',
-        ctaTitle: 'Want to see the full workflow rather than isolated screenshots?',
-        ctaDesc: 'Book a live walkthrough and we will show the complete order-to-production-to-loyalty flow.',
+        workflowKicker: 'END-TO-END WORKFLOW',
+        workflowTitle: 'A single order can trigger the entire store journey.',
+        workflowDesc:
+          'Ordering, member recognition, production routing, status, notification and analytics all stay attached to one order trail.',
+        workflow: ['Mobile order', 'Member / offer', 'Production route', 'Machine / staff', 'Status + notify', 'Analytics'],
+        machinePreview: 'Production console',
+        order: 'Order #A184',
+        recipe: 'Recipe mapped',
+        machineState: 'Machine 01 · Mixing',
+        statusBack: 'Status returned',
+        loyaltyPreview: 'Customer lifecycle',
+        lifecycle: ['Join', 'Earn', 'Reward', 'Return'],
+        campaign: 'Targeted campaign',
+        repeatLift: '+18% repeat visits',
+        ctaTitle: 'See how the modules behave as one system.',
+        ctaDesc: 'A live demo is more useful than eight isolated screenshots. We can show the complete order-to-production-to-loyalty journey.',
         cta: 'Book a live demo',
       }
     : {
         eyebrow: '平台能力',
-        title: '为现代奶茶店打造的一体化运营系统。',
-        subtitle:
-          '可以从手机下单或会员系统开始，再逐步加入奶茶机自动化、通知、数据分析和外卖渠道，而不需要重新搭一套顾客流程。',
+        title: '不是一堆彼此割裂的工具，而是一套奶茶店运营系统。',
+        subtitle: '顾客下单、会员、生产、通知和老板数据围绕同一条订单轨迹连接起来。',
+        coreOne: '核心 01',
+        coreTwo: '核心 02',
         machine: '奶茶机联动',
-        machineDesc:
-          '把结构化订单与配方数据连接到奶茶机工作流，保留生产状态，并通过日志支持远程诊断。',
-        loyalty: '会员与增长',
-        loyaltyDesc:
-          '积分、活动、优惠券和顾客历史都嵌入同一条订单流程，让每一笔交易都可以继续推动复购。',
-        learn: '查看功能',
-        sectionTitle: '一个平台，八项互相连接的能力',
-        sectionDesc: '系统不是多个孤立模块的拼接，而是围绕同一条运营数据链设计。',
+        machineDesc: '把结构化配方和客制化数据送入生产流程，保留制作状态，并留下支持诊断所需的日志。',
+        loyalty: '会员与积分',
+        loyaltyDesc: '积分、优惠券、活动和顾客历史，都和产生它们的订单保持连接。',
+        explore: '查看功能',
+        architectureKicker: '系统架构',
+        architectureTitle: '多个触点，共用一个运营数据层。',
+        architectureDesc: '顾客渠道、门店运营和生产端不需要各自形成数据孤岛，可以共享同一笔订单、同一个顾客和同一套状态信息。',
+        touchpoints: ['HTML5 下单', '店内点单', '外卖渠道', '第三方 API'],
+        engine: '订单与顾客中台',
+        engineSub: '统一数据源',
+        outputs: ['生产', '会员', '通知', '数据分析'],
+        capabilitiesKicker: '互相连接的模块',
+        capabilitiesTitle: '八项能力，从一开始就按照协同工作来设计。',
+        capabilitiesDesc: '每个模块单独都有价值，但当数据链保持连接时，价值会明显放大。',
         features: [
           ['HTML5 手机下单', '顾客直接用手机浏览器下单，无需下载 App。', '/features/online-ordering'],
-          ['积分与会员', '自动累计积分、建立会员档案并奖励复购。', '/features/loyalty'],
-          ['活动与优惠', '根据顾客行为创建会员活动、优惠券和定向优惠。', '/features/loyalty'],
-          ['奶茶机联动', '把结构化饮品指令送入生产工作流，并保持状态连接。', '/features/machine'],
+          ['积分与会员', '自动识别会员、累计积分并保留顾客消费历史。', '/features/loyalty'],
+          ['活动与优惠', '根据顾客行为创建优惠券、奖励和定向活动。', '/features/loyalty'],
+          ['奶茶机联动', '把结构化饮品指令送入生产流程，并保持状态连接。', '/features/machine'],
           ['订单状态系统', '从已接单、制作中到可取餐，每一步都清晰可见。', '/features/online-ordering'],
-          ['SMS / Email 通知', '订单确认和制作完成后通过常用渠道自动通知顾客。', '/features/online-ordering'],
-          ['数据与经营分析', '从一个老板视图查看销售、产品、顾客、渠道和运营趋势。', '/features/reports'],
-          ['外卖 API 接入', '把外部外卖渠道接入同一套订单和运营数据层。', '/features/all-in-one'],
+          ['SMS / Email 通知', '订单确认和制作完成后通过常用渠道主动通知顾客。', '/features/online-ordering'],
+          ['数据与经营分析', '统一查看销售、产品、顾客、渠道和运营趋势。', '/features/reports'],
+          ['外卖 API 接入', '把外部外卖渠道接入同一个订单和运营数据层。', '/features/all-in-one'],
         ],
-        flowEyebrow: '模块如何协同',
-        flowTitle: '真正的价值不在功能数量，而在完整工作流。',
-        flowDesc:
-          '一笔手机订单可以同时产生会员行为、进入生产队列、更新状态、触发顾客通知并进入数据分析，而且始终保持同一个订单轨迹。',
-        flow: ['手机下单', '会员与活动', '生产 / 奶茶机', '实时状态', 'SMS / Email', '数据分析'],
-        apiTitle: '为连接而设计',
-        apiDesc:
-          'HTML5 前端、通知渠道、自动化设备和外卖 API 可以处于同一架构中，系统可以随着门店运营继续扩展。',
-        ctaTitle: '不想只看一堆孤立截图？',
-        ctaDesc: '预约现场演示，我们直接展示从下单、生产到会员的完整链路。',
+        workflowKicker: '端到端工作流',
+        workflowTitle: '一笔订单，可以触发整个门店流程。',
+        workflowDesc: '下单、会员识别、生产路由、状态、通知和分析始终挂在同一条订单轨迹上。',
+        workflow: ['手机下单', '会员 / 活动', '生产路由', '机器 / 人工', '状态 + 通知', '数据分析'],
+        machinePreview: '生产控制台',
+        order: '订单 #A184',
+        recipe: '配方已映射',
+        machineState: '奶茶机 01 · 制作中',
+        statusBack: '状态已回传',
+        loyaltyPreview: '顾客生命周期',
+        lifecycle: ['加入', '积累', '奖励', '复购'],
+        campaign: '定向活动',
+        repeatLift: '复购 +18%',
+        ctaTitle: '真正看懂它，要看这些模块如何作为一套系统运行。',
+        ctaDesc: '现场演示比八张孤立截图更有价值。我们可以直接展示从下单、生产到会员的完整链路。',
         cta: '预约现场演示',
       };
 
-  const featureIcons = [Smartphone, Gift, Zap, Cpu, Activity, BellRing, BarChart3, Plug];
-  const featureAccents = [
-    'bg-emerald-50 text-emerald-700',
-    'bg-lime-50 text-lime-700',
-    'bg-amber-50 text-amber-700',
-    'bg-slate-950 text-emerald-300',
-    'bg-cyan-50 text-cyan-700',
-    'bg-violet-50 text-violet-700',
-    'bg-blue-50 text-blue-700',
-    'bg-rose-50 text-rose-700',
-  ];
-
-  const flowIcons = [Smartphone, Gift, Cpu, Activity, MessageSquare, BarChart3];
+  const featureIcons = [Smartphone, Gift, TicketPercent, Cpu, Activity, BellRing, BarChart3, Plug];
+  const touchIcons = [Globe2, ShoppingBag, Layers3, Plug];
+  const outputIcons = [Cpu, Gift, BellRing, BarChart3];
+  const workflowIcons = [Smartphone, Users, Workflow, Cpu, MessageSquare, BarChart3];
 
   return (
     <div className="min-h-screen bg-white pt-[76px] text-slate-950">
@@ -134,10 +159,26 @@ const Features = () => {
                   <div className="rounded-2xl bg-emerald-500 p-3.5 text-white"><Cpu className="h-7 w-7" /></div>
                   <ArrowRight className="h-5 w-5 text-slate-400 transition group-hover:translate-x-1 group-hover:text-emerald-300" />
                 </div>
-                <div className="mt-7 text-xs font-black uppercase tracking-[0.2em] text-emerald-300">CORE ADVANTAGE 01</div>
+                <div className="mt-7 text-xs font-black uppercase tracking-[0.2em] text-emerald-300">{copy.coreOne}</div>
                 <h2 className="mt-3 text-3xl font-black tracking-[-0.035em]">{copy.machine}</h2>
                 <p className="mt-4 max-w-xl text-base leading-7 text-slate-300">{copy.machineDesc}</p>
-                <div className="mt-7 inline-flex items-center gap-2 text-sm font-black text-emerald-300">{copy.learn} <ArrowRight className="h-4 w-4" /></div>
+
+                <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.055] p-4">
+                  <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">{copy.machinePreview}</div>
+                  <div className="mt-4 grid grid-cols-2 gap-2">
+                    {[
+                      [copy.order, copy.recipe],
+                      [copy.machineState, copy.statusBack],
+                    ].map(([a, b]) => (
+                      <div key={a} className="rounded-xl bg-white/5 p-3">
+                        <div className="text-xs font-black text-white">{a}</div>
+                        <div className="mt-1 text-[10px] font-bold text-emerald-300">{b}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-7 inline-flex items-center gap-2 text-sm font-black text-emerald-300">{copy.explore} <ArrowRight className="h-4 w-4" /></div>
               </div>
             </Link>
 
@@ -148,36 +189,99 @@ const Features = () => {
                   <div className="rounded-2xl bg-white p-3.5 text-emerald-700 shadow-sm ring-1 ring-emerald-900/5"><Gift className="h-7 w-7" /></div>
                   <ArrowRight className="h-5 w-5 text-emerald-500 transition group-hover:translate-x-1" />
                 </div>
-                <div className="mt-7 text-xs font-black uppercase tracking-[0.2em] text-emerald-700">CORE ADVANTAGE 02</div>
+                <div className="mt-7 text-xs font-black uppercase tracking-[0.2em] text-emerald-700">{copy.coreTwo}</div>
                 <h2 className="mt-3 text-3xl font-black tracking-[-0.035em] text-slate-950">{copy.loyalty}</h2>
                 <p className="mt-4 max-w-xl text-base leading-7 text-slate-600">{copy.loyaltyDesc}</p>
-                <div className="mt-7 inline-flex items-center gap-2 text-sm font-black text-emerald-700">{copy.learn} <ArrowRight className="h-4 w-4" /></div>
+
+                <div className="mt-8 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-emerald-900/5">
+                  <div className="text-[10px] font-black uppercase tracking-[0.16em] text-emerald-700">{copy.loyaltyPreview}</div>
+                  <div className="mt-4 grid grid-cols-4 gap-2">
+                    {copy.lifecycle.map((label, index) => (
+                      <div key={label} className="text-center">
+                        <div className={`mx-auto flex h-8 w-8 items-center justify-center rounded-full text-[10px] font-black ${index < 3 ? 'bg-emerald-600 text-white' : 'bg-emerald-50 text-emerald-700'}`}>{index + 1}</div>
+                        <div className="mt-2 text-[9px] font-bold text-slate-500">{label}</div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-4 flex items-center justify-between rounded-xl bg-emerald-50 px-3 py-2.5">
+                    <span className="text-[10px] font-black text-slate-700">{copy.campaign}</span>
+                    <span className="text-xs font-black text-emerald-700">{copy.repeatLift}</span>
+                  </div>
+                </div>
+
+                <div className="mt-7 inline-flex items-center gap-2 text-sm font-black text-emerald-700">{copy.explore} <ArrowRight className="h-4 w-4" /></div>
               </div>
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="py-20 lg:py-24">
+      <section className="bg-white py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <div className="text-xs font-black uppercase tracking-[0.2em] text-emerald-700">CONNECTED MODULES</div>
-            <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] sm:text-5xl">{copy.sectionTitle}</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">{copy.sectionDesc}</p>
+            <div className="text-xs font-black uppercase tracking-[0.2em] text-emerald-700">{copy.architectureKicker}</div>
+            <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] sm:text-5xl">{copy.architectureTitle}</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">{copy.architectureDesc}</p>
+          </div>
+
+          <div className="mt-12 grid gap-4 lg:grid-cols-[1fr_0.78fr_1fr] lg:items-center">
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+              {copy.touchpoints.map((label, index) => {
+                const Icon = touchIcons[index];
+                return (
+                  <div key={label} className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700"><Icon className="h-5 w-5" /></div>
+                    <div className="font-black text-slate-950">{label}</div>
+                    <ArrowRight className="ml-auto h-4 w-4 text-emerald-500" />
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="relative flex min-h-[260px] items-center justify-center">
+              <div className="absolute inset-x-0 top-1/2 hidden h-px bg-emerald-200 lg:block" />
+              <div className="relative z-10 flex h-44 w-44 flex-col items-center justify-center rounded-full bg-slate-950 p-6 text-center text-white shadow-2xl ring-[18px] ring-emerald-50">
+                <Workflow className="h-7 w-7 text-emerald-300" />
+                <div className="mt-3 text-base font-black leading-5">{copy.engine}</div>
+                <div className="mt-2 text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400">{copy.engineSub}</div>
+              </div>
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+              {copy.outputs.map((label, index) => {
+                const Icon = outputIcons[index];
+                return (
+                  <div key={label} className="flex items-center gap-4 rounded-2xl border border-emerald-100 bg-[#f7fbf8] p-4 shadow-sm">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-600 text-white"><Icon className="h-5 w-5" /></div>
+                    <div className="font-black text-slate-950">{label}</div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#f7fbf8] py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="text-xs font-black uppercase tracking-[0.2em] text-emerald-700">{copy.capabilitiesKicker}</div>
+            <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] sm:text-5xl">{copy.capabilitiesTitle}</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">{copy.capabilitiesDesc}</p>
           </div>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {copy.features.map(([title, desc, link], index) => {
               const Icon = featureIcons[index];
               return (
-                <Link key={`${title}-${index}`} to={link} className="group flex min-h-[252px] flex-col rounded-[26px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-emerald-200 hover:shadow-xl hover:shadow-emerald-950/5">
-                  <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${featureAccents[index]}`}>
+                <Link key={`${title}-${index}`} to={link} className="group flex min-h-[260px] flex-col rounded-[26px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-emerald-200 hover:shadow-xl hover:shadow-emerald-950/5">
+                  <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${index === 3 ? 'bg-slate-950 text-emerald-300' : 'bg-emerald-50 text-emerald-700'}`}>
                     <Icon className="h-5 w-5" />
                   </div>
                   <h3 className="mt-5 text-xl font-black tracking-[-0.025em] text-slate-950">{title}</h3>
                   <p className="mt-3 flex-1 text-sm leading-6 text-slate-600">{desc}</p>
                   <div className="mt-6 inline-flex items-center gap-1.5 text-sm font-black text-emerald-700">
-                    {copy.learn} <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                    {copy.explore} <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
                   </div>
                 </Link>
               );
@@ -188,73 +292,38 @@ const Features = () => {
 
       <section className="bg-slate-950 py-20 text-white lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
             <div>
-              <div className="text-xs font-black uppercase tracking-[0.2em] text-emerald-300">{copy.flowEyebrow}</div>
-              <h2 className="mt-4 text-4xl font-black tracking-[-0.045em] sm:text-5xl">{copy.flowTitle}</h2>
-              <p className="mt-5 max-w-xl text-lg leading-8 text-slate-300">{copy.flowDesc}</p>
+              <div className="text-xs font-black uppercase tracking-[0.2em] text-emerald-300">{copy.workflowKicker}</div>
+              <h2 className="mt-4 text-4xl font-black tracking-[-0.045em] sm:text-5xl">{copy.workflowTitle}</h2>
+              <p className="mt-5 max-w-xl text-lg leading-8 text-slate-300">{copy.workflowDesc}</p>
             </div>
 
-            <div className="rounded-[30px] border border-white/10 bg-white/[0.045] p-5 sm:p-7">
-              <div className="grid gap-3 sm:grid-cols-2">
-                {copy.flow.map((label, index) => {
-                  const Icon = flowIcons[index];
-                  return (
-                    <div key={label} className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.055] p-4">
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-400 text-emerald-950"><Icon className="h-5 w-5" /></div>
-                      <div className="min-w-0 flex-1">
-                        <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-500">0{index + 1}</div>
-                        <div className="mt-1 font-black text-white">{label}</div>
-                      </div>
-                      {index < copy.flow.length - 1 && <ArrowRight className="h-4 w-4 shrink-0 text-emerald-400" />}
+            <div className="grid gap-3 sm:grid-cols-2">
+              {copy.workflow.map((label, index) => {
+                const Icon = workflowIcons[index];
+                return (
+                  <div key={label} className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.055] p-4">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-400 text-emerald-950"><Icon className="h-5 w-5" /></div>
+                    <div className="min-w-0 flex-1">
+                      <div className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-500">0{index + 1}</div>
+                      <div className="mt-1 font-black text-white">{label}</div>
                     </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#f7fbf8] py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-            <div>
-              <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-lg shadow-emerald-600/20"><Workflow className="h-7 w-7" /></div>
-              <h2 className="mt-6 text-4xl font-black tracking-[-0.04em] sm:text-5xl">{copy.apiTitle}</h2>
-              <p className="mt-5 text-lg leading-8 text-slate-600">{copy.apiDesc}</p>
-            </div>
-
-            <div className="relative rounded-[32px] border border-emerald-950/10 bg-white p-5 shadow-xl shadow-emerald-950/5 sm:p-7">
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-                {[
-                  [Globe2, 'HTML5', 'Customer ordering'],
-                  [MessageSquare, 'SMS', 'Ready notifications'],
-                  [Mail, 'Email', 'Order communication'],
-                  [Cpu, 'Machine', 'Production workflow'],
-                  [Plug, 'API', 'Delivery channels'],
-                  [BarChart3, 'Data', 'Owner analytics'],
-                ].map(([Icon, title, subtitle]: any) => (
-                  <div key={title} className="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-900/5">
-                    <Icon className="h-5 w-5 text-emerald-700" />
-                    <div className="mt-5 text-base font-black text-slate-950">{title}</div>
-                    <div className="mt-1 text-xs font-semibold leading-5 text-slate-500">{subtitle}</div>
+                    {index < copy.workflow.length - 1 && <ArrowRight className="h-4 w-4 shrink-0 text-emerald-400" />}
                   </div>
-                ))}
-              </div>
+                );
+              })}
             </div>
           </div>
         </div>
       </section>
 
       <section className="px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
-        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 rounded-[36px] bg-emerald-600 px-6 py-12 text-white shadow-2xl shadow-emerald-900/15 sm:px-10 lg:flex-row lg:items-center lg:px-14">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.16em]"><Zap className="h-4 w-4" /> LIVE WALKTHROUGH</div>
-            <h2 className="mt-5 text-3xl font-black tracking-[-0.035em] sm:text-4xl">{copy.ctaTitle}</h2>
-            <p className="mt-4 text-base leading-7 text-emerald-50/90">{copy.ctaDesc}</p>
-          </div>
-          <Link to="/contact" className="inline-flex shrink-0 items-center justify-center gap-2 self-start rounded-full bg-white px-7 py-4 text-base font-black text-emerald-800 shadow-xl transition hover:bg-emerald-50 lg:self-auto">
+        <div className="mx-auto max-w-6xl rounded-[34px] bg-emerald-950 px-6 py-12 text-center text-white shadow-2xl sm:px-10">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-400 text-emerald-950"><MonitorSmartphone className="h-7 w-7" /></div>
+          <h2 className="mx-auto mt-6 max-w-3xl text-3xl font-black tracking-[-0.035em] sm:text-4xl">{copy.ctaTitle}</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-emerald-100">{copy.ctaDesc}</p>
+          <Link to="/contact" className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 text-base font-black text-emerald-950 transition hover:bg-emerald-50">
             {copy.cta} <ArrowRight className="h-5 w-5" />
           </Link>
         </div>
