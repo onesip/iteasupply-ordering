@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/payment-system",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/payment-system/:path*",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
+}
