@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ArrowUpRight, Globe2, Menu, X } from 'lucide-react';
 import { useLanguage } from '../src/contexts/LanguageContext';
+import { BRAND_LOGO } from '../src/assets/brandLogo';
 
 const SUPPLY_SITE = 'https://itea-supply-bv.odoo.com/zh_CN';
 
@@ -27,7 +28,7 @@ const Header: React.FC = () => {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-[#eadfd6] bg-[#fffdfb]/96 backdrop-blur-lg">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <a href={SUPPLY_SITE} className="flex min-w-0 items-center" aria-label={copy.supply} title={copy.supply}>
-          <img src="/itea-logo-original.png" alt="I'TEA" className="h-[31px] w-auto object-contain sm:h-[34px]" />
+          <img src={BRAND_LOGO} alt="I'TEA" className="h-[31px] w-auto object-contain sm:h-[34px]" />
         </a>
 
         <nav className="hidden items-center gap-6 lg:flex">
