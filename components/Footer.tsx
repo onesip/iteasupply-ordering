@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '../src/contexts/LanguageContext';
+import { BRAND_LOGO } from '../src/assets/brandLogo';
 
 const SUPPLY_SITE = 'https://itea-supply-bv.odoo.com/zh_CN';
 
@@ -18,7 +19,7 @@ const Footer: React.FC = () => {
         <div className="grid gap-9 md:grid-cols-[1.5fr_0.8fr_0.8fr_0.8fr] md:gap-10">
           <div className="max-w-sm">
             <a href={SUPPLY_SITE} className="inline-flex rounded-md bg-[#fffaf6] px-3 py-2.5" aria-label={copy.website}>
-              <img src="/itea-logo-original.png" alt="I'TEA" className="h-[30px] w-auto object-contain" />
+              <img src={BRAND_LOGO} alt="I'TEA" className="h-[30px] w-auto object-contain" />
             </a>
             <p className="mt-4 text-[12px] leading-6 text-[#9f8c83] sm:text-[13px]">{copy.desc}</p>
             <a href={SUPPLY_SITE} className="mt-4 inline-flex items-center gap-1.5 text-[12px] font-medium text-[#c9b9b0] hover:text-white">{copy.website}<ArrowUpRight className="h-3.5 w-3.5" /></a>
