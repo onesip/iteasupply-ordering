@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Activity,
@@ -8,8 +8,6 @@ import {
   Cpu,
   Gift,
   GraduationCap,
-  Mail,
-  Plug,
   Settings2,
   ShieldCheck,
   Smartphone,
@@ -28,6 +26,12 @@ const Home = () => {
   const en = language === 'en';
   const uiLanguage = en ? 'en' : 'zh';
   const [activeTour, setActiveTour] = useState<TourKey>('production');
+  const [hookStep, setHookStep] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => setHookStep((step) => (step + 1) % 3), 2200);
+    return () => window.clearInterval(timer);
+  }, []);
 
   const copy = en
     ? {
@@ -37,6 +41,13 @@ const Home = () => {
         primary: 'Book a live demo',
         secondary: 'See what you get',
         fit: 'Built for bubble tea shops, cafés and growing beverage chains.',
+        hookLabel: 'LIVE ORDER JOURNEY',
+        hookIntro: 'One order keeps moving after checkout.',
+        hookSteps: [
+          ['Order received', 'Customer order + drink options'],
+          ['Sent to production', 'Structured production workflow'],
+          ['Customer retained', 'Status, points and purchase history'],
+        ],
         getTitle: 'What exactly are we offering?',
         getDesc: 'Not just software and not just a machine. I’TEA connects the customer journey, store workflow and automated production into one practical operating setup.',
         offers: [
@@ -101,6 +112,13 @@ const Home = () => {
         primary: '预约现场演示',
         secondary: '看看具体卖什么',
         fit: '适合奶茶店、咖啡饮品店以及正在扩张的连锁品牌。',
+        hookLabel: '实时订单旅程',
+        hookIntro: '一笔订单，付款以后还会继续往下走。',
+        hookSteps: [
+          ['订单进入系统', '顾客订单 + 饮品选项'],
+          ['进入生产流程', '结构化制作流程'],
+          ['沉淀顾客价值', '状态、积分与消费历史'],
+        ],
         getTitle: '我们到底在提供什么？',
         getDesc: '不是单独卖一个软件，也不是单独卖一台机器。I’TEA 把顾客下单、门店运营和自动化生产连接成一套真正能落地的门店系统。',
         offers: [
@@ -181,18 +199,33 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-xl border border-[#dfd2c9] bg-[#f7f1ec] shadow-[0_24px_70px_-45px_rgba(57,26,16,0.35)]">
-            <div className="flex items-center justify-between border-b border-[#e6d9d0] bg-white px-4 py-3">
-              <div className="flex items-center gap-2 text-[12px] font-semibold text-[#4b3026]"><span className="h-2 w-2 rounded-full bg-[#8a4a30]" /> I&apos;TEA Control</div>
-              <div className="text-[11px] text-[#9a8479]">Connected operations</div>
+          <div>
+            <div className="mb-3 overflow-hidden rounded-lg border border-[#ddcfc6] bg-white shadow-[0_12px_35px_-30px_rgba(57,26,16,0.45)]">
+              <div className="flex items-center justify-between border-b border-[#eee3db] px-4 py-2.5">
+                <div className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-[#8a4a30] shadow-[0_0_0_4px_rgba(138,74,48,0.10)]" /><span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#806b61]">{copy.hookLabel}</span></div>
+                <span className="hidden text-[11px] text-[#a28f84] sm:block">{copy.hookIntro}</span>
+              </div>
+              <div className="grid grid-cols-3">
+                {copy.hookSteps.map(([title, desc], index) => {
+                  const active = hookStep === index;
+                  return <div key={title} className={`relative px-3 py-3 transition sm:px-4 ${active ? 'bg-[#fbf5f0]' : 'bg-white'}`}><div className="flex items-center gap-2"><span className={`flex h-5 w-5 items-center justify-center rounded-full border text-[9px] font-semibold transition ${active ? 'border-[#391A10] bg-[#391A10] text-white' : 'border-[#d9ccc4] text-[#9e8a7f]'}`}>{index + 1}</span><span className={`truncate text-[10px] font-semibold sm:text-[11px] ${active ? 'text-[#391A10]' : 'text-[#806b61]'}`}>{title}</span></div><p className="mt-1.5 hidden pl-7 text-[10px] leading-4 text-[#a08d82] sm:block">{desc}</p>{active && <div className="absolute inset-x-0 bottom-0 h-[2px] bg-[#7a3d27]" />}</div>;
+                })}
+              </div>
             </div>
-            <div className="grid grid-cols-4 border-b border-[#e6d9d0] bg-white">
-              {tourItems.map(({ key, icon: Icon }) => {
-                const active = activeTour === key;
-                return <button key={key} type="button" onClick={() => setActiveTour(key)} className={`min-w-[74px] border-b-2 px-2 py-3 text-left transition sm:px-4 ${active ? 'border-[#391A10] bg-[#fbf6f2]' : 'border-transparent hover:bg-[#fcfaf8]'}`}><div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#4b3026] sm:text-[12px]"><Icon className={`h-4 w-4 ${active ? 'text-[#7a3d27]' : 'text-[#aa958a]'}`} /><span>{copy.tabs[key][0]}</span></div></button>;
-              })}
+
+            <div className="overflow-hidden rounded-xl border border-[#dfd2c9] bg-[#f7f1ec] shadow-[0_24px_70px_-45px_rgba(57,26,16,0.35)]">
+              <div className="flex items-center justify-between border-b border-[#e6d9d0] bg-white px-4 py-3">
+                <div className="flex items-center gap-2 text-[12px] font-semibold text-[#4b3026]"><span className="h-2 w-2 rounded-full bg-[#8a4a30]" /> I&apos;TEA Control</div>
+                <div className="text-[11px] text-[#9a8479]">Connected operations</div>
+              </div>
+              <div className="grid grid-cols-4 border-b border-[#e6d9d0] bg-white">
+                {tourItems.map(({ key, icon: Icon }) => {
+                  const active = activeTour === key;
+                  return <button key={key} type="button" onClick={() => setActiveTour(key)} className={`min-w-[74px] border-b-2 px-2 py-3 text-left transition sm:px-4 ${active ? 'border-[#391A10] bg-[#fbf6f2]' : 'border-transparent hover:bg-[#fcfaf8]'}`}><div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#4b3026] sm:text-[12px]"><Icon className={`h-4 w-4 ${active ? 'text-[#7a3d27]' : 'text-[#aa958a]'}`} /><span>{copy.tabs[key][0]}</span></div></button>;
+                })}
+              </div>
+              <div className="p-3 sm:p-5"><LiveSystemView kind={activeTour} language={uiLanguage} /></div>
             </div>
-            <div className="p-3 sm:p-5"><LiveSystemView kind={activeTour} language={uiLanguage} /></div>
           </div>
         </div>
       </section>
