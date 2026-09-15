@@ -20,6 +20,20 @@
   --color-emerald-800: #391a10;
   --color-emerald-900: #2d140d;
   --color-emerald-950: #1e0c07;
+
+  /* English is the default site language. LanguageContext updates html[lang]. */
+  --membership-screenshot: var(--membership-screenshot-en);
+  --analytics-screenshot: var(--analytics-screenshot-en);
+}
+
+html[lang="en"] {
+  --membership-screenshot: var(--membership-screenshot-en);
+  --analytics-screenshot: var(--analytics-screenshot-en);
+}
+
+html[lang="zh-CN"] {
+  --membership-screenshot: var(--membership-screenshot-zh);
+  --analytics-screenshot: var(--analytics-screenshot-zh);
 }
 
 html {
@@ -73,8 +87,8 @@ svg {
 
 /*
  * Exhibition homepage: the first two post-production business cards are
- * intentionally visual-first. The reviewed, privacy-safe screenshots are
- * embedded in the application bundle and exposed as CSS variables at runtime.
+ * visual proof points. Their system visuals now follow the selected site
+ * language: English site -> English UI; Chinese site -> Chinese UI.
  */
 main > div.pt-16 > section:nth-of-type(4) .mt-10.grid > article:nth-child(1),
 main > div.pt-16 > section:nth-of-type(4) .mt-10.grid > article:nth-child(2) {
