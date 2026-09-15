@@ -71,6 +71,70 @@ svg {
   display: none;
 }
 
+/*
+ * Exhibition homepage: the first two post-production business cards are
+ * intentionally visual-first. They use sanitized screenshots from the live
+ * membership and analytics back office, while the remaining cards stay compact.
+ */
+main > div.pt-16 > section:nth-of-type(4) .mt-10.grid > article:nth-child(1),
+main > div.pt-16 > section:nth-of-type(4) .mt-10.grid > article:nth-child(2) {
+  overflow: hidden;
+  padding-top: 0;
+  background: #fffdfb;
+}
+
+main > div.pt-16 > section:nth-of-type(4) .mt-10.grid > article:nth-child(1)::before,
+main > div.pt-16 > section:nth-of-type(4) .mt-10.grid > article:nth-child(2)::before {
+  content: '';
+  display: block;
+  width: calc(100% + 2.5rem);
+  margin: 0 -1.25rem 1.25rem;
+  border-bottom: 1px solid #eadfd6;
+  background-color: #f4f5f7;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+}
+
+main > div.pt-16 > section:nth-of-type(4) .mt-10.grid > article:nth-child(1)::before {
+  aspect-ratio: 620 / 277;
+  background-image: url('/screens/membership.webp');
+}
+
+main > div.pt-16 > section:nth-of-type(4) .mt-10.grid > article:nth-child(2)::before {
+  aspect-ratio: 620 / 323;
+  background-image: url('/screens/analytics.webp');
+}
+
+main > div.pt-16 > section:nth-of-type(4) .mt-10.grid > article:nth-child(1) h3,
+main > div.pt-16 > section:nth-of-type(4) .mt-10.grid > article:nth-child(2) h3 {
+  margin-top: 0.85rem;
+  font-size: 1rem;
+}
+
+main > div.pt-16 > section:nth-of-type(4) .mt-10.grid > article:nth-child(1) p,
+main > div.pt-16 > section:nth-of-type(4) .mt-10.grid > article:nth-child(2) p {
+  max-width: 38rem;
+}
+
+@media (min-width: 640px) {
+  main > div.pt-16 > section:nth-of-type(4) .mt-10.grid > article:nth-child(1),
+  main > div.pt-16 > section:nth-of-type(4) .mt-10.grid > article:nth-child(2) {
+    grid-column: span 2 / span 2;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  main > div.pt-16 > section:nth-of-type(4) .mt-10.grid > article:nth-child(1)::before,
+  main > div.pt-16 > section:nth-of-type(4) .mt-10.grid > article:nth-child(2)::before {
+    width: calc(100% + 3rem);
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
 @media (max-width: 639px) {
   main h1,
   main h2,
@@ -110,6 +174,12 @@ svg {
 
   #business-value .grid.border-b button {
     min-height: 84px;
+  }
+
+  main > div.pt-16 > section:nth-of-type(4) .mt-10.grid > article:nth-child(1)::before,
+  main > div.pt-16 > section:nth-of-type(4) .mt-10.grid > article:nth-child(2)::before {
+    background-size: contain;
+    background-position: center top;
   }
 }
 
