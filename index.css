@@ -73,8 +73,8 @@ svg {
 
 /*
  * Exhibition homepage: the first two post-production business cards are
- * intentionally visual-first. They use HD privacy-safe exports from the live
- * membership and analytics back office, while the remaining cards stay compact.
+ * intentionally visual-first. These public-safe crops remove account/KPI data
+ * while preserving the real membership and analytics interface structure.
  */
 main > div.pt-16 > section:nth-of-type(4) .mt-10.grid > article:nth-child(1),
 main > div.pt-16 > section:nth-of-type(4) .mt-10.grid > article:nth-child(2) {
@@ -97,13 +97,13 @@ main > div.pt-16 > section:nth-of-type(4) .mt-10.grid > article:nth-child(2)::be
 }
 
 main > div.pt-16 > section:nth-of-type(4) .mt-10.grid > article:nth-child(1)::before {
-  aspect-ratio: 2048 / 868;
-  background-image: url('/screens/membership-private-hd.webp');
+  aspect-ratio: 1200 / 211;
+  background-image: url('/screens/membership-marketing-public-v4.webp');
 }
 
 main > div.pt-16 > section:nth-of-type(4) .mt-10.grid > article:nth-child(2)::before {
-  aspect-ratio: 2048 / 1018;
-  background-image: url('/screens/analytics-private-hd.webp');
+  aspect-ratio: 1200 / 398;
+  background-image: url('/screens/analytics-public-v4.webp');
 }
 
 main > div.pt-16 > section:nth-of-type(4) .mt-10.grid > article:nth-child(1) h3,
