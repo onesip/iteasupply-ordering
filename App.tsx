@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { LanguageProvider } from './src/contexts/LanguageContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Home from './pages/Home';
+import HomeExhibition from './pages/HomeExhibition';
 import WhyITeaSupply from './pages/WhyITeaSupply';
 import Features from './pages/Features';
 import FeatureDetail from './pages/FeatureDetail';
@@ -22,7 +22,7 @@ function App() {
           <Header />
           <main className="flex-grow">
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<HomeExhibition />} />
               <Route path="/payment-system" element={<Navigate to="/" replace />} />
               <Route path="/payment-system/*" element={<Navigate to="/" replace />} />
               <Route path="/why-orderpin" element={<WhyITeaSupply />} />
